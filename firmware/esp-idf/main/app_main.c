@@ -88,7 +88,7 @@ static void wifi_init_sta(void)
     ESP_LOGI(TAG, "wifi_init_sta finished.");
 }
 
-static void button_pressed_callback(void) {
+void button_pressed_callback(void) {
     ESP_LOGI(TAG, "Button pressed.");
     if (sip_logic_is_call_active()) {
         sip_logic_hangup();

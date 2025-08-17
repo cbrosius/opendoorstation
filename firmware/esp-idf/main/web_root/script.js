@@ -1,6 +1,30 @@
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('config-form');
     const status = document.getElementById('status');
+    const virtualButton = document.getElementById('virtual-button');
+    const doorStatus = document.getElementById('door-status');
+    const lightStatus = document.getElementById('light-status');
+
+    // --- Virtual I/O Handling ---
+    virtualButton.addEventListener('click', function() {
+        fetch('/api/virtual/button', { method: 'POST' })
+            .catch(console.error);
+    });
+
+    function pollRelayStatus() {
+        fetch('/api/virtual/relays')
+            .then(response => response.json())
+            .then(data => {
+                doorStatus.classList.toggle('active', data.door_active);
+                lightStatus.classList.toggle('active', data.light_active);
+            })
+            .catch(console.error);
+    }
+
+    setInterval(pollRelayStatus, 1000); // Poll every second
+
+
+    // --- Configuration Form Handling ---
 
     // Fetch current config and populate the form
     status.textContent = 'Loading configuration...';

@@ -23,4 +23,17 @@ void relay_pulse_door(uint32_t duration_ms);
  */
 void relay_toggle_light(void);
 
+// A struct to hold the current state of the relays
+typedef struct {
+    bool door_active;
+    bool light_active;
+} relay_states_t;
+
+/**
+ * @brief Gets the current state of the relays.
+ *
+ * @return A struct containing the boolean state of each relay.
+ */
+relay_states_t relay_get_states(void);
+
 #endif // IO_RELAY_H

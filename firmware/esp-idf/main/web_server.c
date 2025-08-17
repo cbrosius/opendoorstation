@@ -4,8 +4,44 @@
 #include <esp_log.h>
 #include <cJSON.h>
 
+#include "io_relay.h"
+
+// Make the main button callback available to the web server
+extern void button_pressed_callback(void);
+
 static const char *TAG = "WEB_SERVER";
 static httpd_handle_t server = NULL;
+
+/*
+ * Handler for getting relay status
+ */
+static esp_err_t relay_status_get_handler(httpd_req_t *req)
+{
+    relay_states_t states = relay_get_states();
+    cJSON *root = cJSON_CreateObject();
+    cJSON_AddBoolToObject(root, "door_active", states.door_active);
+    cJSON_AddBoolToObject(root, "light_active", states.light_active);
+
+    const char *sys_info = cJSON_PrintUnformatted(root);
+    httpd_resp_set_type(req, "application/json");
+    httpd_resp_send(req, sys_info, strlen(sys_info));
+
+    free((void *)sys_info);
+    cJSON_Delete(root);
+
+    return ESP_OK;
+}
+
+/*
+ * Handler for virtual button press
+ */
+static esp_err_t virtual_button_post_handler(httpd_req_t *req)
+{
+    button_pressed_callback();
+    httpd_resp_send(req, "OK", HTTPD_RESP_USE_STRLEN);
+    return ESP_OK;
+}
+
 
 // In a real application, you would use NVS (Non-Volatile Storage)
 // to store and retrieve these settings.
@@ -158,6 +194,20 @@ void start_webserver(void)
             .handler   = config_post_handler,
         };
         httpd_register_uri_handler(server, &config_post_uri);
+
+        httpd_uri_t relay_status_uri = {
+            .uri       = "/api/virtual/relays",
+            .method    = HTTP_GET,
+            .handler   = relay_status_get_handler,
+        };
+        httpd_register_uri_handler(server, &relay_status_uri);
+
+        httpd_uri_t button_press_uri = {
+            .uri       = "/api/virtual/button",
+            .method    = HTTP_POST,
+            .handler   = virtual_button_post_handler,
+        };
+        httpd_register_uri_handler(server, &button_press_uri);
     }
 }
 

@@ -73,6 +73,46 @@ button:hover {
     background-color: #005a9c;
 }
 
+button:hover {
+    background-color: #005a9c;
+}
+
+.virtual-controls {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1em 0;
+}
+
+#virtual-button {
+    width: auto;
+    padding: 10px 15px;
+    background-color: #28a745;
+}
+
+#virtual-button:hover {
+    background-color: #218838;
+}
+
+.relay-status {
+    display: flex;
+    align-items: center;
+}
+
+.status-indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #6c757d; /* Grey for off */
+    margin-left: 10px;
+    transition: background-color 0.3s;
+}
+
+.status-indicator.active {
+    background-color: #ffc107; /* Yellow for active */
+}
+
+
 #status {
     margin-top: 1em;
     font-weight: bold;
