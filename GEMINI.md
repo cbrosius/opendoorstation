@@ -16,7 +16,7 @@ The primary goal is to develop a functional prototype of a smart door station ba
     - Wi-Fi credentials
     - SIP account details (User, Domain, Callee)
 - **Virtual I/O:** The web interface includes a virtual doorbell button and live status indicators for the relays, allowing for testing the core logic without physical hardware.
-- **Hardware:** ESP32-S3 DevKit, button, and two relays.
+- **Hardware:** ESP32-S3 DevKit (Hard-coded project target), button, and two relays.
 
 ## 3. Development Process & Preferences
 
@@ -51,6 +51,17 @@ firmware/esp-idf/
      ├─── *.c, *.h       # Feature modules (SIP, I/O, etc.)
      └─── CMakeLists.txt # Component build script
 ```
+
+### 3.4. Secrets Management
+
+To handle sensitive data like Wi-Fi and SIP credentials securely, the project uses a `.env` file at the project root.
+
+- **File:** `.env` (not committed to Git).
+- **Format:** Standard `KEY="VALUE"` pairs.
+- **Process:**
+    1. The `.env` file in the project root is automatically loaded by the build system.
+    2. The values are made available to the firmware code via `CONFIG_` macros (e.g., `CONFIG_WIFI_SSID`).
+- **Web UI:** The web interface provides a read-only view of the configuration that was compiled into the firmware.
 
 ## 4. Future Roadmap
 

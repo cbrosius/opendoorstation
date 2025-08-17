@@ -32,6 +32,24 @@ legend {
     padding: 0 0.5em;
 }
 
+.config-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em 0;
+}
+
+.config-label {
+    font-weight: 500;
+    color: #333;
+}
+
+.config-value {
+    font-family: monospace;
+    background-color: #e9ebee;
+    padding: 0.2em 0.5em;
+    border-radius: 4px;
+}
+
 label {
     display: block;
     margin-bottom: 0.5em;

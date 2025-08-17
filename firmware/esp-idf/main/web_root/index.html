@@ -6,27 +6,27 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <h1>Doorbell Configuration</h1>
-    <form id="config-form">
-        <fieldset>
-            <legend>Wi-Fi Settings</legend>
-            <label for="wifi_ssid">SSID:</label>
-            <input type="text" id="wifi_ssid" name="wifi_ssid">
-        </fieldset>
+    <h1>Doorbell Status</h1>
 
-        <fieldset>
-            <legend>SIP Settings</legend>
-            <label for="sip_user">User:</label>
-            <input type="text" id="sip_user" name="sip_user">
-            <label for="sip_domain">Domain:</label>
-            <input type="text" id="sip_domain" name="sip_domain">
-            <label for="sip_callee_uri">Callee URI:</label>
-            <input type="text" id="sip_callee_uri" name="sip_callee_uri">
-            <p>Note: Password cannot be changed from this interface.</p>
-        </fieldset>
-
-        <button type="submit">Save & Reboot</button>
-    </form>
+    <fieldset>
+        <legend>Compiled-in Configuration</legend>
+        <div class="config-item">
+            <span class="config-label">WiFi SSID:</span>
+            <span id="wifi_ssid" class="config-value"></span>
+        </div>
+        <div class="config-item">
+            <span class="config-label">SIP User:</span>
+            <span id="sip_user" class="config-value"></span>
+        </div>
+        <div class="config-item">
+            <span class="config-label">SIP Domain:</span>
+            <span id="sip_domain" class="config-value"></span>
+        </div>
+        <div class="config-item">
+            <span class="config-label">Calling To:</span>
+            <span id="sip_callee_uri" class="config-value"></span>
+        </div>
+    </fieldset>
 
     <fieldset>
         <legend>Virtual Hardware</legend>
@@ -42,8 +42,6 @@
             </div>
         </div>
     </fieldset>
-
-    <p id="status"></p>
 
     <script src="script.js"></script>
 </body>

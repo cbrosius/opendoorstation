@@ -52,10 +52,10 @@ static esp_err_t virtual_button_post_handler(httpd_req_t *req)
 static esp_err_t config_get_handler(httpd_req_t *req)
 {
     cJSON *root = cJSON_CreateObject();
-    cJSON_AddStringToObject(root, "wifi_ssid", WIFI_SSID);
-    cJSON_AddStringToObject(root, "sip_user", SIP_USER);
-    cJSON_AddStringToObject(root, "sip_domain", SIP_DOMAIN);
-    cJSON_AddStringToObject(root, "sip_callee_uri", SIP_CALLEE_URI);
+    cJSON_AddStringToObject(root, "wifi_ssid", CONFIG_WIFI_SSID);
+    cJSON_AddStringToObject(root, "sip_user", CONFIG_SIP_USER);
+    cJSON_AddStringToObject(root, "sip_domain", CONFIG_SIP_DOMAIN);
+    cJSON_AddStringToObject(root, "sip_callee_uri", CONFIG_SIP_CALLEE_URI);
 
     const char *sys_info = cJSON_Print(root);
     httpd_resp_set_type(req, "application/json");
@@ -186,12 +186,7 @@ void start_webserver(void)
         };
         httpd_register_uri_handler(server, &config_get_uri);
 
-        httpd_uri_t config_post_uri = {
-            .uri       = "/api/config",
-            .method    = HTTP_POST,
-            .handler   = config_post_handler,
-        };
-        httpd_register_uri_handler(server, &config_post_uri);
+        
 
         httpd_uri_t relay_status_uri = {
             .uri       = "/api/virtual/relays",

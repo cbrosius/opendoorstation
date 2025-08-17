@@ -62,6 +62,11 @@ void app_main(void)
 
     ESP_LOGI(TAG, "Initializing networking...");
     wifi_init_sta();
+
+    // Keep the main task alive
+    while (1) {
+        vTaskDelay(pdMS_TO_TICKS(1000));
+    }
 }
 
 static void wifi_init_sta(void)
@@ -79,8 +84,8 @@ static void wifi_init_sta(void)
 
     wifi_config_t wifi_config = {
         .sta = {
-            .ssid = WIFI_SSID,
-            .password = WIFI_PASS,
+            .ssid = CONFIG_WIFI_SSID,
+            .password = CONFIG_WIFI_PASS,
         },
     };
     ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));

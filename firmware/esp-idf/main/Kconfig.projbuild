@@ -1,0 +1,27 @@
+menu "Project Configuration"
+
+    config WIFI_SSID
+        string "WiFi SSID"
+        default ""
+
+    config WIFI_PASS
+        string "WiFi Password"
+        default ""
+
+    config SIP_USER
+        string "SIP User"
+        default ""
+
+    config SIP_PASS
+        string "SIP Password"
+        default ""
+
+    config SIP_DOMAIN
+        string "SIP Domain"
+        default ""
+
+    config SIP_CALLEE_URI
+        string "SIP Callee URI"
+        default ""
+
+endmenu
