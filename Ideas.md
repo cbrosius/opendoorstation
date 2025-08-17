@@ -27,6 +27,7 @@ Die Türstation soll flexibel an verschiedene Anwendungsfälle angepasst werden 
 - **Netzwerk**:
   - WLAN
   - Optional Ethernet (via PHY)
+  - Webserver zur Konfiguration und Steuerung
 
 ---
 
