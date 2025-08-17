@@ -2,6 +2,7 @@
 #define IO_RELAY_H
 
 #include <stdint.h>
+#include <stdbool.h>
 
 /**
  * @brief Initializes the GPIO pins for the relays.

@@ -5,9 +5,7 @@
 #include <cJSON.h>
 
 #include "io_relay.h"
-
-// Make the main button callback available to the web server
-extern void button_pressed_callback(void);
+#include "app_main.h" // Include declarations from app_main
 
 static const char *TAG = "WEB_SERVER";
 static httpd_handle_t server = NULL;

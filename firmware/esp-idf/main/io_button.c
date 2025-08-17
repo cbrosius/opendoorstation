@@ -7,7 +7,7 @@
 static button_callback_t app_callback = NULL;
 
 // A queue to handle events from the ISR to a task
-static xQueueHandle gpio_evt_queue = NULL;
+static QueueHandle_t gpio_evt_queue = NULL;
 
 // ISR handler for the button press
 static void IRAM_ATTR gpio_isr_handler(void* arg) {

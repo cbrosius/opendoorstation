@@ -33,6 +33,7 @@ This section contains specific instructions and preferences provided by the user
 ### 3.2. Technology Stack
 
 - **Firmware:** ESP-IDF
+- **ESP-IDF Version:** Always use the latest stable version for generating code. (User preference)
 - **SIP Library:** `esp_sip` from the ESP-ADF framework.
 - **Web Server:** `esp_http_server` native to ESP-IDF.
 - **JSON Parsing:** `cJSON` library.
