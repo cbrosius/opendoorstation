@@ -9,6 +9,8 @@ if(EXISTS ${CMAKE_SOURCE_DIR}/../../.env)
         # Regex to parse KEY="VALUE" or KEY=VALUE
         if(var MATCHES "^([A-Za-z0-9_]+)=['\"]?([^'\"]*)['\"]?$")
             set(ENV{${CMAKE_MATCH_1}} "${CMAKE_MATCH_2}")
+            # Define them for C code
+            add_compile_definitions(${CMAKE_MATCH_1}="${CMAKE_MATCH_2}")
         endif()
     endforeach()
 endif()

@@ -59,3 +59,7 @@ dkms.conf
 
 # Secrets file
 .env
+
+# Log files
+*.log
+firmware/esp-idf/main/build/log/*

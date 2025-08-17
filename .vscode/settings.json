@@ -1,3 +1,7 @@
 {
-    "idf.portWin": "COM6"
+    "idf.portWin": "COM7",
+    "idf.openOcdConfigs": [
+        "interface/ftdi/esp32_devkitj_v1.cfg",
+        "target/esp32s3.cfg"
+    ]
 }

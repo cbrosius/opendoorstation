@@ -26,8 +26,9 @@ static void wifi_event_handler(void* arg, esp_event_base_t event_base, int32_t e
     if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START) {
         esp_wifi_connect();
     } else if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
-        ESP_LOGI(TAG, "Disconnected from Wi-Fi, reconnecting...");
-        esp_wifi_connect();
+    wifi_event_sta_disconnected_t* event = (wifi_event_sta_disconnected_t*) event_data;
+    ESP_LOGI(TAG, "Disconnected from Wi-Fi. Reason: %d. Reconnecting...", event->reason);
+    esp_wifi_connect();
     }
 }
 
@@ -63,6 +64,9 @@ void app_main(void)
     ESP_LOGI(TAG, "Initializing networking...");
     wifi_init_sta();
 
+    // Debugging: Print configured SSID
+    ESP_LOGI(TAG, "Configured SSID: %s", CONFIG_WIFI_SSID);
+
     // Keep the main task alive
     while (1) {
         vTaskDelay(pdMS_TO_TICKS(1000));
@@ -84,12 +88,12 @@ static void wifi_init_sta(void)
 
     wifi_config_t wifi_config = {
         .sta = {
-            .ssid = CONFIG_WIFI_SSID,
-            .password = CONFIG_WIFI_PASS,
+            .ssid = WIFI_SSID,
+            .password = WIFI_PASS,
         },
     };
     ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
-    ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_config));
+    ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_config));
     ESP_ERROR_CHECK(esp_wifi_start());
 
     ESP_LOGI(TAG, "wifi_init_sta finished.");
