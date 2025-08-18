@@ -65,7 +65,7 @@ void app_main(void)
     wifi_init_sta();
 
     // Debugging: Print configured SSID
-    ESP_LOGI(TAG, "Configured SSID: %s", CONFIG_WIFI_SSID);
+    ESP_LOGI(TAG, "Configured SSID: %s", WIFI_SSID);
 
     // Keep the main task alive
     while (1) {

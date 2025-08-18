@@ -53,10 +53,10 @@ static esp_err_t virtual_button_post_handler(httpd_req_t *req)
 static esp_err_t config_get_handler(httpd_req_t *req)
 {
     cJSON *root = cJSON_CreateObject();
-    cJSON_AddStringToObject(root, "wifi_ssid", CONFIG_WIFI_SSID);
-    cJSON_AddStringToObject(root, "sip_user", CONFIG_SIP_USER);
-    cJSON_AddStringToObject(root, "sip_domain", CONFIG_SIP_DOMAIN);
-    cJSON_AddStringToObject(root, "sip_callee_uri", CONFIG_SIP_CALLEE_URI);
+    cJSON_AddStringToObject(root, "wifi_ssid", WIFI_SSID);
+    cJSON_AddStringToObject(root, "sip_user", SIP_USER);
+    cJSON_AddStringToObject(root, "sip_domain", SIP_DOMAIN);
+    cJSON_AddStringToObject(root, "sip_callee_uri", SIP_CALLEE_URI);
     cJSON_AddBoolToObject(root, "sip_registered", sip_logic_is_registered());
 
     const char *sys_info = cJSON_Print(root);

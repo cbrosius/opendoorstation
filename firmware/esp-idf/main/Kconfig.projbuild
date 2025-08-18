@@ -2,26 +2,32 @@ menu "Project Configuration"
 
     config WIFI_SSID
         string "WiFi SSID"
+        option env="WIFI_SSID"
         default ""
 
     config WIFI_PASS
         string "WiFi Password"
+        option env="WIFI_PASS"
         default ""
 
     config SIP_USER
         string "SIP User"
+        option env="SIP_USER"
         default ""
 
     config SIP_PASS
         string "SIP Password"
+        option env="SIP_PASS"
         default ""
 
     config SIP_DOMAIN
         string "SIP Domain"
+        option env="SIP_DOMAIN"
         default ""
 
     config SIP_CALLEE_URI
         string "SIP Callee URI"
+        option env="SIP_CALLEE_URI"
         default ""
 
 endmenu

@@ -60,7 +60,7 @@ To handle sensitive data like Wi-Fi and SIP credentials securely, the project us
 - **Format:** Standard `KEY="VALUE"` pairs.
 - **Process:**
     1. The `.env` file in the project root is automatically loaded by the build system.
-    2. The values are made available to the firmware code via `CONFIG_` macros (e.g., `CONFIG_WIFI_SSID`).
+    2. The values are made available to the firmware code via VARIABLES (e.g., `WIFI_SSID`).
 - **Web UI:** The web interface provides a read-only view of the configuration that was compiled into the firmware.
 
 ## 4. Future Roadmap

@@ -59,7 +59,7 @@ void sip_logic_call(void) {
         ESP_LOGW(TAG, "A call is already active.");
         return;
     }
-    ESP_LOGI(TAG, "Initiating call to %s (skeleton)", CONFIG_SIP_CALLEE_URI);
+    ESP_LOGI(TAG, "Initiating call to %s (skeleton)", SIP_CALLEE_URI);
     // esp_sip_connect(sip_handle, SIP_CALLEE_URI);
     
     // For prototype: simulate call established

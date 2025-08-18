@@ -470,12 +470,6 @@ CONFIG_PARTITION_TABLE_MD5=y
 #
 # Project Configuration
 #
-CONFIG_WIFI_SSID=""
-CONFIG_WIFI_PASS=""
-CONFIG_SIP_USER=""
-CONFIG_SIP_PASS=""
-CONFIG_SIP_DOMAIN=""
-CONFIG_SIP_CALLEE_URI=""
 # end of Project Configuration
 
 #
