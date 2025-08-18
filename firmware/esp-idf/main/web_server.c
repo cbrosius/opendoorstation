@@ -5,6 +5,7 @@
 #include <cJSON.h>
 
 #include "io_relay.h"
+#include "sip_logic.h"
 #include "app_main.h" // Include declarations from app_main
 
 static const char *TAG = "WEB_SERVER";
@@ -56,6 +57,7 @@ static esp_err_t config_get_handler(httpd_req_t *req)
     cJSON_AddStringToObject(root, "sip_user", CONFIG_SIP_USER);
     cJSON_AddStringToObject(root, "sip_domain", CONFIG_SIP_DOMAIN);
     cJSON_AddStringToObject(root, "sip_callee_uri", CONFIG_SIP_CALLEE_URI);
+    cJSON_AddBoolToObject(root, "sip_registered", sip_logic_is_registered());
 
     const char *sys_info = cJSON_Print(root);
     httpd_resp_set_type(req, "application/json");
@@ -185,6 +187,13 @@ void start_webserver(void)
             .handler   = config_get_handler,
         };
         httpd_register_uri_handler(server, &config_get_uri);
+
+        httpd_uri_t config_post_uri = {
+            .uri       = "/api/config",
+            .method    = HTTP_POST,
+            .handler   = config_post_handler,
+        };
+        httpd_register_uri_handler(server, &config_post_uri);
 
         
 

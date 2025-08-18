@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('sip_user').textContent = data.sip_user || 'N/A';
                 document.getElementById('sip_domain').textContent = data.sip_domain || 'N/A';
                 document.getElementById('sip_callee_uri').textContent = data.sip_callee_uri || 'N/A';
+                document.getElementById('sip_registered').textContent = data.sip_registered ? 'Yes' : 'No';
             })
             .catch(error => {
                 console.error('Error fetching config:', error);

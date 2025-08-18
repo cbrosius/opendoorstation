@@ -25,4 +25,11 @@ void sip_logic_hangup(void);
  */
 bool sip_logic_is_call_active(void);
 
+/**
+ * @brief Checks if the SIP client is registered.
+ *
+ * @return true if the client is registered, false otherwise.
+ */
+bool sip_logic_is_registered(void);
+
 #endif // SIP_LOGIC_H

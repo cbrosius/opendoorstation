@@ -31,6 +31,7 @@ typedef struct {
 
 static const char *TAG = "SIP_LOGIC";
 static bool is_call_active = false;
+static bool is_registered = false;
 
 // Forward declaration for the event handler
 static void sip_event_handler(sip_event_t *event);
@@ -81,6 +82,10 @@ void sip_logic_hangup(void) {
 
 bool sip_logic_is_call_active(void) {
     return is_call_active;
+}
+
+bool sip_logic_is_registered(void) {
+    return is_registered;
 }
 
 // This function would be called by the esp_sip library on different events.
